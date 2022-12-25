@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React, { useRef, useState } from 'react';
 import { View, TouchableOpacity } from 'react-native';
 import RNFS from 'react-native-fs';
 import Video from 'react-native-video';
@@ -28,8 +28,9 @@ function EditorScreen(props) {
   // VESDK.unlockWithLicense(require('./vesdk_license'));
 
   const ref = useRef(null);
-
-
+  const [trimmerLeftHandlePosition,setTrimmerLeftHandlePosition] = useState(15000);
+  const [trimmerRightHandlePosition,setTrimmerRightHandlePosition] = useState(30000);
+  
 
   return (
     <View style={{
@@ -49,8 +50,9 @@ function EditorScreen(props) {
         trimmerRightHandlePosition={trimmerRightHandlePosition}
         minimumTrimDuration={minimumTrimDuration}
         maxTrimDuration={maxTrimDuration}
+        style={{position:'absolute'}}
       />
-      {/* <Video
+       {/* <Video
         ref={ref}
         style={{
           position: 'absolute',
@@ -65,7 +67,7 @@ function EditorScreen(props) {
         // resizeMode={'contain'}
         muted={false}
         controls={true}
-      /> */}
+      />  */}
 
       <View
         style={{
@@ -77,9 +79,9 @@ function EditorScreen(props) {
           right: 0
         }}
       >
-        <TouchableOpacity onPress={() => { navigation.navigate('MusicPicker') }}>
+        {/* <TouchableOpacity onPress={() => { navigation.navigate('MusicPicker') }}>
           <Icons name='music' />
-        </TouchableOpacity>
+        </TouchableOpacity> */}
       </View>
 
       <View
@@ -92,13 +94,13 @@ function EditorScreen(props) {
           right: 0
         }}
       >
-        <Slider
+        {/* <Slider
           onValueChange={(value) => {
             console.log(value, "asas")
           }}
         >
 
-        </Slider>
+        </Slider> */}
 
 
       </View>
